@@ -7,17 +7,21 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="background-overlay"></div>
+
   <div class="container">
     <header class="hero">
       <h1>Drop Quest</h1>
-      <p>Collect clean water, upgrade your village, and learn why safe water matters.</p>
+      <p>Collect clean water, upgrade your village, and bring safe water access to everyone.</p>
     </header>
 
     <main class="game-layout">
       <section class="panel stats-panel">
         <h2>Village Status</h2>
         <p><strong>Water Collected:</strong> <span id="waterCount">0</span></p>
+        <p><strong>Water per Click:</strong> <span id="waterPerClickText">1</span></p>
         <p><strong>Clean Water Access:</strong> <span id="progressText">0%</span></p>
+        <p><strong>Time Left:</strong> <span id="timerText">60</span>s</p>
 
         <div class="progress-bar">
           <div class="progress-fill" id="progressFill"></div>
@@ -30,8 +34,14 @@
 
       <section class="panel action-panel">
         <h2>Collect Water</h2>
-        <button id="collectBtn" class="drop-button">💧 Gather Water</button>
+        <div class="button-zone" id="buttonZone">
+          <button id="collectBtn" class="drop-button">💧 Gather Water</button>
+        </div>
         <p class="small-text">Click to collect water for the village.</p>
+
+        <div class="npc-box" id="npcBox">
+          Guide: Start gathering water and invest in tools that help the whole village.
+        </div>
       </section>
 
       <section class="panel shop-panel">
@@ -57,12 +67,25 @@
           Filtration System (+30% access) — Cost: <span id="filterCost">150</span>
         </button>
       </section>
+
+      <section class="panel log-panel">
+        <h2>Recent Actions</h2>
+        <ul id="actionLog" class="action-log">
+          <li>No actions yet.</li>
+        </ul>
+      </section>
     </main>
 
     <section class="panel message-panel hidden" id="winPanel">
-      <h2>You Did It!</h2>
-      <p>You helped bring clean water access to the whole village.</p>
+      <h2>Victory!</h2>
+      <p>You brought clean water access to the whole village before time ran out.</p>
       <button id="restartBtn">Play Again</button>
+    </section>
+
+    <section class="panel message-panel hidden" id="losePanel">
+      <h2>Time's Up</h2>
+      <p>The village still needs help. Try again and plan your upgrades carefully.</p>
+      <button id="retryBtn">Try Again</button>
     </section>
   </div>
 
