@@ -6,15 +6,50 @@
 }
 
 body {
-  background: linear-gradient(to bottom, #dff6ff, #f7fbff);
-  color: #1f2d3d;
   min-height: 100vh;
   padding: 20px;
+  color: #1f2d3d;
+  transition: background 0.6s ease;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body.stage-0 {
+  background: linear-gradient(to bottom, #d7e9f2, #edf5f9);
+}
+
+body.stage-1 {
+  background: linear-gradient(to bottom, #cdefff, #dff7f0);
+}
+
+body.stage-2 {
+  background: linear-gradient(to bottom, #bde0fe, #d8f3dc);
+}
+
+body.stage-3 {
+  background: linear-gradient(to bottom, #a9def9, #c7f9cc);
+}
+
+body.stage-4 {
+  background: linear-gradient(to bottom, #8ecae6, #b7efc5);
+}
+
+.background-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,0.4), transparent 20%),
+    radial-gradient(circle at 80% 15%, rgba(255,255,255,0.25), transparent 18%),
+    radial-gradient(circle at 50% 80%, rgba(255,255,255,0.18), transparent 22%);
+  z-index: 0;
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 1150px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .hero {
@@ -23,27 +58,28 @@ body {
 }
 
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: 2.7rem;
   margin-bottom: 10px;
   color: #0077b6;
 }
 
 .hero p {
   font-size: 1.1rem;
-  color: #345;
+  color: #274c5e;
 }
 
 .game-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
 }
 
 .panel {
-  background: white;
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 18px;
   padding: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(4px);
 }
 
 .panel h2 {
@@ -72,17 +108,35 @@ body {
   transition: width 0.3s ease;
 }
 
-.fact-box {
+.fact-box,
+.npc-box {
   margin-top: 12px;
   padding: 12px;
+  border-radius: 12px;
+  line-height: 1.45;
+}
+
+.fact-box {
   background: #eef9ff;
   border-left: 5px solid #00a6d6;
-  border-radius: 10px;
-  line-height: 1.4;
+}
+
+.npc-box {
+  background: #f0fff4;
+  border-left: 5px solid #52b788;
+  margin-top: 16px;
 }
 
 .action-panel {
   text-align: center;
+}
+
+.button-zone {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 12px;
+  min-height: 100px;
+  min-width: 220px;
 }
 
 .drop-button {
@@ -93,8 +147,9 @@ body {
   background: #00b4d8;
   color: white;
   cursor: pointer;
-  transition: transform 0.15s ease, background 0.2s ease;
+  transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
   margin-bottom: 12px;
+  box-shadow: 0 8px 18px rgba(0, 180, 216, 0.25);
 }
 
 .drop-button:hover {
@@ -103,11 +158,36 @@ body {
 }
 
 .drop-button:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
+}
+
+.floating-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #0077b6;
+  pointer-events: none;
+  animation: floatUp 0.8s ease-out forwards;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -20%);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -110px);
+  }
 }
 
 .upgrade-btn,
-#restartBtn {
+#restartBtn,
+#retryBtn {
   width: 100%;
   padding: 14px;
   margin-bottom: 12px;
@@ -120,15 +200,37 @@ body {
 }
 
 .upgrade-btn:hover,
-#restartBtn:hover {
+#restartBtn:hover,
+#retryBtn:hover {
   background: #ade8f4;
   transform: translateY(-1px);
 }
 
-.upgrade-btn:disabled {
+.upgrade-btn:disabled,
+.drop-button:disabled {
   background: #e5e5e5;
   color: #888;
   cursor: not-allowed;
+  box-shadow: none;
+}
+
+.log-panel {
+  grid-column: span 1;
+}
+
+.action-log {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.action-log li {
+  background: #f7fbfd;
+  border-left: 4px solid #90e0ef;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.96rem;
 }
 
 .message-panel {
