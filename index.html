@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drop Quest</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <h1>Drop Quest</h1>
+      <p>Collect clean water, upgrade your village, and learn why safe water matters.</p>
+    </header>
+
+    <main class="game-layout">
+      <section class="panel stats-panel">
+        <h2>Village Status</h2>
+        <p><strong>Water Collected:</strong> <span id="waterCount">0</span></p>
+        <p><strong>Clean Water Access:</strong> <span id="progressText">0%</span></p>
+
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="fact-box" id="factBox">
+          Every drop counts. Many communities still spend hours collecting water.
+        </div>
+      </section>
+
+      <section class="panel action-panel">
+        <h2>Collect Water</h2>
+        <button id="collectBtn" class="drop-button">💧 Gather Water</button>
+        <p class="small-text">Click to collect water for the village.</p>
+      </section>
+
+      <section class="panel shop-panel">
+        <h2>Upgrades</h2>
+
+        <button class="upgrade-btn" id="bucketUpgrade">
+          Better Bucket (+1 per click) — Cost: <span id="bucketCost">10</span>
+        </button>
+
+        <button class="upgrade-btn" id="cartUpgrade">
+          Water Cart (+2 per click) — Cost: <span id="cartCost">25</span>
+        </button>
+
+        <button class="upgrade-btn" id="pumpUpgrade">
+          Repair Pump (+10% access) — Cost: <span id="pumpCost">50</span>
+        </button>
+
+        <button class="upgrade-btn" id="wellUpgrade">
+          Community Well (+20% access) — Cost: <span id="wellCost">100</span>
+        </button>
+
+        <button class="upgrade-btn" id="filterUpgrade">
+          Filtration System (+30% access) — Cost: <span id="filterCost">150</span>
+        </button>
+      </section>
+    </main>
+
+    <section class="panel message-panel hidden" id="winPanel">
+      <h2>You Did It!</h2>
+      <p>You helped bring clean water access to the whole village.</p>
+      <button id="restartBtn">Play Again</button>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
