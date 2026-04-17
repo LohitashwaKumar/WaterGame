@@ -1,0 +1,146 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(to bottom, #dff6ff, #f7fbff);
+  color: #1f2d3d;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #0077b6;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #345;
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.panel {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.panel h2 {
+  margin-bottom: 15px;
+  color: #005f8f;
+}
+
+.stats-panel p,
+.action-panel p {
+  margin-bottom: 12px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 22px;
+  background: #d9eaf4;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 14px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, #48cae4, #0096c7);
+  transition: width 0.3s ease;
+}
+
+.fact-box {
+  margin-top: 12px;
+  padding: 12px;
+  background: #eef9ff;
+  border-left: 5px solid #00a6d6;
+  border-radius: 10px;
+  line-height: 1.4;
+}
+
+.action-panel {
+  text-align: center;
+}
+
+.drop-button {
+  font-size: 1.3rem;
+  padding: 18px 24px;
+  border: none;
+  border-radius: 14px;
+  background: #00b4d8;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
+  margin-bottom: 12px;
+}
+
+.drop-button:hover {
+  background: #0096c7;
+  transform: scale(1.05);
+}
+
+.drop-button:active {
+  transform: scale(0.98);
+}
+
+.upgrade-btn,
+#restartBtn {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #caf0f8;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+  text-align: left;
+}
+
+.upgrade-btn:hover,
+#restartBtn:hover {
+  background: #ade8f4;
+  transform: translateY(-1px);
+}
+
+.upgrade-btn:disabled {
+  background: #e5e5e5;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.message-panel {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.small-text {
+  font-size: 0.95rem;
+  color: #567;
+}
